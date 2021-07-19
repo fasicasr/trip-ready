@@ -1,0 +1,22 @@
+[
+    {
+        "email": "stark@mail.test",
+        "firstName": "Howard",
+        "lastName": "Stark"
+    },
+    {
+        "email": "captainAmerica@mail.test",
+        "firstName": "Steve",
+        "lastName": "Rogers"
+    },
+    {
+        "email": "blackWidow@mail.test",
+        "firstName": "Nathasha",
+        "lastName": "Romanoff"
+    },
+    {
+        "email": "winterSoldier@mail.test",
+        "firstName": "Bucky",
+        "lastName": "Barnes"
+    }
+]
