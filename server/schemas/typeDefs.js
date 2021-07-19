@@ -33,7 +33,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    
+    user(email: String): User
   }
 `;
 
