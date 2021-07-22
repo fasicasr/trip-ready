@@ -21,7 +21,7 @@ const typeDefs = gql`
     title: String
     description: String
     createdAt: String
-    owner: User
+    ownerName: String
   }
 
   type Group {
@@ -35,12 +35,16 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(email: String!): User
+    pictures: [Picture]
+    picture(_id: String!): Picture
   }
 
   type Mutation {
     addUser(email: String!, firstName: String!, lastName: String!): User
     updateUser(userId: ID!, email: String, firstName: String, lastName: String): User
     deleteUser(email: String!): String
+    addPicture(title: String!, description: String, ownerName: String): Picture
+    updatePicture(_id: ID!, title: String, description: String, ownerName: String): Picture
   }
 `;
 
