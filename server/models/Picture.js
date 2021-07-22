@@ -16,9 +16,13 @@ const pictureSchema = new Schema({
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp)
     },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+    ownerName: {
+        type: String,
+        maxlength: 40
+    },
+    img: {
+        data: Buffer,
+        contentType: String
     }
 });
 
