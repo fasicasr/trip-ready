@@ -6,6 +6,7 @@ const typeDefs = gql`
     email: String
     firstName: String
     lastName: String
+    groups: [Group]
   }
 
   type Suggestion {
@@ -35,12 +36,16 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(email: String!): User
+    groups: [Group]
+    group(id: ID!): Group
   }
-
+  
   type Mutation {
     addUser(email: String!, firstName: String!, lastName: String!): User
     updateUser(userId: ID!, email: String, firstName: String, lastName: String): User
     deleteUser(email: String!): String
+    addGroup(groupName: String!, destination: String!, users: [ID] ): Group
+    deleteGroup(id: ID!): String
   }
 `;
 
