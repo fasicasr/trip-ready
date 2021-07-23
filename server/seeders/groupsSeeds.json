@@ -1,0 +1,15 @@
+[
+    {
+        "groupName": "Avengers",
+        "destination": "Thanos"
+    },
+    {
+        "groupName": "Black panther squad",
+        "destination": "Wakanda"
+    },
+    {
+        "groupName": "Guardians of Galaxy",
+        "destination": "Nowhere"
+    }
+    
+]
