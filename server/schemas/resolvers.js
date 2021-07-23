@@ -108,12 +108,23 @@ const resolvers = {
     }
  */
 
-    // updateGroup: async(parent, {id, groupName, destination, user_id }) => {
-    //   const group = await Group.findOneAndUpdate(
-    //     {_id: id},
-    //     {}
-    //     )
-    // }
+    updateGroup: async(parent, {_id, groupName, destination }) => {
+      const group = await Group.findOneAndUpdate(
+        {_id},
+        {groupName, destination}
+      )
+      return group;
+    }
+    /**
+     Query example for updateGroup:
+      mutation updateGroup{
+        updateGroup(_id: "60fa3c175d75209e608f25eb", groupName: "Updated Black Widow!", destination: "Reston, VA"){
+          _id,
+          groupName,
+          destination,
+        }
+      }
+     */
 
 
   }

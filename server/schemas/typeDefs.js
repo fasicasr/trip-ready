@@ -37,7 +37,7 @@ const typeDefs = gql`
     users: [User]
     user(email: String!): User
     groups: [Group]
-    group(id: ID!): Group
+    group(_id: ID!): Group
   }
   
   type Mutation {
@@ -45,6 +45,7 @@ const typeDefs = gql`
     updateUser(userId: ID!, email: String, firstName: String, lastName: String): User
     deleteUser(email: String!): String
     addGroup(groupName: String!, destination: String!, users: [ID] ): Group
+    updateGroup(_id: ID!, groupName: String, destination: String ): Group
     deleteGroup(id: ID!): String
   }
 `;
