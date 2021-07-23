@@ -1,9 +1,11 @@
 import ProfileCaption from "./ProfileCaption";
+import ProfilePicture from "./ProfilePicture";
 
 function Profile() {
   return (
-    <div className="profile-caption">
+    <div className="profile">
       <ProfileCaption />
+      <ProfilePicture />
     </div>
   );
 }
