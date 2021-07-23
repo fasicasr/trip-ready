@@ -114,7 +114,7 @@ const resolvers = {
         {groupName, destination}
       )
       return group;
-    }
+    },
     /**
      Query example for updateGroup:
       mutation updateGroup{
@@ -125,6 +125,33 @@ const resolvers = {
         }
       }
      */
+
+      addUserToGroup: async(parent, {groupId, userId}) => {
+        const group = await Group.findOneAndUpdate(
+          {_id: groupId},
+          {$addToSet:{users: userId}},
+          {new: true}
+        ) 
+
+        await User.findOneAndUpdate(
+          {_id: userId},
+          {$addToSet: {groups: groupId}}
+        )
+        return group;
+      }
+      /**
+       Query example for addUserToGroup:
+       mutation addUserToGroup{
+        addUserToGroup(groupId: "60fa3c175d75209e608f25eb", userId: "60fa36b8bddadb9d27a50376"){
+          _id,
+          groupName,
+          destination,
+          users{
+            firstName
+          }
+        }
+      }
+       */
 
 
   }

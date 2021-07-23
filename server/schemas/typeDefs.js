@@ -46,6 +46,7 @@ const typeDefs = gql`
     deleteUser(email: String!): String
     addGroup(groupName: String!, destination: String!, users: [ID] ): Group
     updateGroup(_id: ID!, groupName: String, destination: String ): Group
+    addUserToGroup(groupId: ID!, userId: ID!): Group
     deleteGroup(id: ID!): String
   }
 `;
