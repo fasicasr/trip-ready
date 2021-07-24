@@ -1,18 +1,69 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import LogIn from "./LogIn";
+import Profile from "./Profile";
 
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
+export default function App() {
+  //setting loggedIn variable to false initially - once logged in - call setLoggedIn function and pass in true
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
-function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            {loggedIn ? (
+              <>
+                <li>
+                  <Link to="/">Log In</Link>
+                </li>
+                <li>
+                  <Link to="/profile">Profile</Link>
+                </li>
+              </>
+            ) : null}
+            {/* //{" "}
+            <li>
+              // <Link to="/">Log In</Link>
+              //{" "}
+            </li>
+            //{" "}
+            <li>
+              // <Link to="/profile">Profile</Link>
+              //{" "}
+            </li>
+            {/* <li>
+              <Link to="/users">Users</Link>
+            </li> */}
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          {/* <Route path="/users">
+            <Users />
+          </Route> */}
+          <Route path="/">
+            <LogIn />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+// function Home() {
+//   return <h2>Home</h2>;
+// }
+
+// function About() {
+//   return <h2>About</h2>;
+// }
+
+// function Users() {
+//   return <h2>Users</h2>;
+// }

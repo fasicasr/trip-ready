@@ -1,5 +1,5 @@
 const { UserInputError } = require('apollo-server-express');
-const { User, Group, Suggestion } = require('../models');
+const { User, Group, Picture, Suggestion } = require('../models');
 
 const resolvers = {
   Query: {
@@ -20,8 +20,16 @@ const resolvers = {
     },
     allSuggestions: async () => {
       return Suggestion.find().populate('belongToGroup');
+    },
+    pictures: async () => {
+      return Picture.find();
+    },
+    picture: async (parent, { _id }) => {
+      return Picture.findById({ _id });
     }
   },
+
+
   Mutation: {
     addUser: async (parent, { email, firstName, lastName }) => {
       const user = await User.create({ email, firstName, lastName });
@@ -30,13 +38,13 @@ const resolvers = {
     updateUser: async (parent, { userId, email, firstName, lastName }) => {
       const updatedUser = {};
 
-      if(email)
+      if (email)
         updatedUser.email = email
 
-      if(firstName)
+      if (firstName)
         updatedUser.firstName = firstName
 
-      if(lastName)
+      if (lastName)
         updatedUser.lastName = lastName
 
       return User.findByIdAndUpdate(
@@ -98,8 +106,6 @@ const resolvers = {
 
     */
 
-
-
     deleteGroup: async (parent, { id }) => {
       const result = await Group.findOneAndDelete({ _id: id });
 
@@ -107,12 +113,40 @@ const resolvers = {
         return 'Successfully deleted a group';
       throw new UserInputError('Group was not found');
     },
-/**
-   Query example for delete: 
-    mutation deleteGroup{
-      deleteGroup(id: "60f9f85b8c52c690666104e3" )
-    }
- */
+    /**
+       Query example for delete: 
+        mutation deleteGroup{
+          deleteGroup(id: "60f9f85b8c52c690666104e3" )
+        }
+    */
+    addPicture: async (parent, { title, description, ownerName }) => {
+      const picture = await Picture.create(
+        {
+          title,
+          description,
+          ownerName
+        }
+      );
+      return picture;
+    },
+    updatePicture: async (parent, { _id, title, description, ownerName }) => {
+      const updatedPicture = {};
+
+      if (title)
+        updatedPicture.title = title;
+
+      if (description)
+        updatedPicture.description = description;
+
+      if (ownerName)
+        updatedPicture.ownerName = ownerName;
+
+      return Picture.findByIdAndUpdate(
+        _id,
+        updatedPicture,
+        { new: true }
+      )
+    },
 
     updateGroup: async(parent, {_id, groupName, destination }) => {
       const group = await Group.findOneAndUpdate(
