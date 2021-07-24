@@ -16,10 +16,10 @@ const resolvers = {
       return Group.findOne({ _id }).populate(['users', 'suggestions']);
     },
     suggestions: async (parent, {belongToGroup}) => {
-      return Suggestion.find({belongToGroup}).populate('belongToGroup');
+      return Suggestion.find({belongToGroup}).populate(['suggestedUser', 'belongToGroup']);
     },
     allSuggestions: async () => {
-      return Suggestion.find().populate('belongToGroup');
+      return Suggestion.find().populate(['suggestedUser', 'belongToGroup']);
     },
     pictures: async () => {
       return Picture.find();
