@@ -190,6 +190,34 @@ const resolvers = {
       }
        */
 
+      updateSuggestion: async (parent, {_id, title, description}) => {
+        const updatedSuggestion = {};
+
+      if(title)
+        updatedSuggestion.title = title
+
+      if(description)
+        updatedSuggestion.description = description
+
+        const suggestion = await Suggestion.findOneAndUpdate(
+          {_id},
+          updatedSuggestion,
+          {new: true}
+        )
+        return suggestion;
+      },
+
+      /**
+       * Example Query for updateSuggestion:
+       * mutation updateSuggestion{
+          updateSuggestion(_id: "60fc32932cb6d4105b9616c6", title: "Updated title!"){
+            _id,
+            title,
+            description
+          }
+        }
+       */
+
       deleteSuggestion: async (parent, {_id}) => {
         const suggestion = await Suggestion.findOneAndDelete({_id});
 

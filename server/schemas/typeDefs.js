@@ -51,6 +51,7 @@ const typeDefs = gql`
     updateGroup(_id: ID!, groupName: String, destination: String ): Group
     addUserToGroup(groupId: ID!, userId: ID!): Group
     addSuggestion(title: String!, description: String! suggestedUser: ID!, belongToGroup: ID!): Suggestion
+    updateSuggestion(_id: ID!, title: String, description: String): Suggestion
     deleteGroup(id: ID!): String
     deleteSuggestion(_id: ID!): String
   }
