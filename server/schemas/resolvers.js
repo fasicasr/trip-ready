@@ -70,6 +70,7 @@ const resolvers = {
           users: users
         });
         
+        if(users)
         users.forEach(async (user) => {
           console.log(user);
           await User.findOneAndUpdate(
@@ -149,9 +150,16 @@ const resolvers = {
     },
 
     updateGroup: async(parent, {_id, groupName, destination }) => {
+      const updatedGroup = {};
+      if(groupName) 
+        updatedGroup.groupName = groupName;
+      
+      if(destination) 
+        updatedGroup.destination = destination;
+
       const group = await Group.findOneAndUpdate(
         {_id},
-        {groupName, destination}
+        updatedGroup
       )
       return group;
     },
