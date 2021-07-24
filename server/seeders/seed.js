@@ -7,6 +7,7 @@ db.once('open', async () => {
     try{
         await User.deleteMany({});
         await Group.deleteMany();
+        await Suggestion.deleteMany();
 
         await Group.create(groupsSeeds);
         await User.create(userSeeds);

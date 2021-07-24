@@ -14,6 +14,7 @@ const typeDefs = gql`
     title: String
     description: String
     suggestedUser: User
+    belongToGroup: Group
     createdAt: String
   }
 
@@ -38,6 +39,8 @@ const typeDefs = gql`
     user(email: String!): User
     groups: [Group]
     group(_id: ID!): Group
+    suggestions(belongToGroup: ID!): [Suggestion]
+    allSuggestions: [Suggestion]
   }
   
   type Mutation {
@@ -47,7 +50,9 @@ const typeDefs = gql`
     addGroup(groupName: String!, destination: String!, users: [ID] ): Group
     updateGroup(_id: ID!, groupName: String, destination: String ): Group
     addUserToGroup(groupId: ID!, userId: ID!): Group
+    addSuggestion(title: String!, description: String! suggestedUser: ID!, belongToGroup: ID!): Suggestion
     deleteGroup(id: ID!): String
+    deleteSuggestion(_id: ID!): String
   }
 `;
 

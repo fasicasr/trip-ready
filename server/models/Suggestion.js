@@ -1,9 +1,10 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
+
 
 const suggestionSchema = new Schema({
     title: {
         type: String,
-        required: true,
         minlength: 8,
         maxlength: 60
     },
@@ -14,6 +15,10 @@ const suggestionSchema = new Schema({
     suggestedUser: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    belongToGroup: {
+        type: Schema.Types.ObjectId,
+        ref: 'Group'
     },
     createdAt: {
         type: Date,

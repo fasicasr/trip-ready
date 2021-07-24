@@ -1,5 +1,5 @@
 const { UserInputError } = require('apollo-server-express');
-const { User, Group } = require('../models');
+const { User, Group, Suggestion } = require('../models');
 
 const resolvers = {
   Query: {
@@ -10,10 +10,16 @@ const resolvers = {
       return User.findOne({ email });
     }, 
     groups: async () => {
-      return Group.find().populate('users');
+      return Group.find().populate(['users', 'suggestions']);
     },
     group: async (parent, { _id }) => {
-      return Group.findOne({ _id }).populate('users');
+      return Group.findOne({ _id }).populate(['users', 'suggestions']);
+    },
+    suggestions: async (parent, {belongToGroup}) => {
+      return Suggestion.find({belongToGroup}).populate('belongToGroup');
+    },
+    allSuggestions: async () => {
+      return Suggestion.find().populate('belongToGroup');
     }
   },
   Mutation: {
@@ -138,7 +144,7 @@ const resolvers = {
           {$addToSet: {groups: groupId}}
         )
         return group;
-      }
+      },
       /**
        Query example for addUserToGroup:
        mutation addUserToGroup{
@@ -153,6 +159,56 @@ const resolvers = {
       }
        */
 
+      addSuggestion: async (parent, { title, description, suggestedUser, belongToGroup}) => {
+        const newSuggestion = await Suggestion.create(
+          { 
+            title, 
+            description, 
+            suggestedUser,
+            belongToGroup
+          }
+        );
+       
+        await Group.findOneAndUpdate(
+          { _id: belongToGroup },
+          { $addToSet: {
+            suggestions: newSuggestion._id
+          }}
+        );
+
+        return newSuggestion;
+      },
+
+      /**
+       Example query for addSuggestion:
+       mutation addSuggestion{
+        addSuggestion(title: "Eat food", description: "Hard Rock cafe anyone?", suggestedUser: "60fa36b8bddadb9d27a50373", belongToGroup: "60fa3c175d75209e608f25eb"){
+          title,
+          description,
+          createdAt
+        }
+      }
+       */
+
+      deleteSuggestion: async (parent, {_id}) => {
+        const suggestion = await Suggestion.findOneAndDelete({_id});
+
+        if (suggestion) {
+          await Group.findOneAndUpdate(
+            { _id: suggestion.belongToGroup._id },
+            { $pull: {suggestions: suggestion._id} }  
+          );
+          return 'Successfully deleted a suggestion';
+        }
+        throw new UserInputError('Suggestion was not found');
+      }
+
+      /**
+        Example query for deleteSuggestion:
+        mutation deleteSuggestion{
+          deleteSuggestion(_id: "60fc32ee7c34081078e48e8c")
+        }
+       */
 
   }
 };
