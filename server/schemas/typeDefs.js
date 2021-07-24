@@ -37,22 +37,18 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(email: String!): User
-<<<<<<< HEAD
     groups: [Group]
     group(_id: ID!): Group
     suggestions(belongToGroup: ID!): [Suggestion]
     allSuggestions: [Suggestion]
-=======
     pictures: [Picture]
     picture(_id: String!): Picture
->>>>>>> main
   }
   
   type Mutation {
     addUser(email: String!, firstName: String!, lastName: String!): User
     updateUser(userId: ID!, email: String, firstName: String, lastName: String): User
     deleteUser(email: String!): String
-<<<<<<< HEAD
     addGroup(groupName: String!, destination: String!, users: [ID] ): Group
     updateGroup(_id: ID!, groupName: String, destination: String ): Group
     addUserToGroup(groupId: ID!, userId: ID!): Group
@@ -60,10 +56,8 @@ const typeDefs = gql`
     updateSuggestion(_id: ID!, title: String, description: String): Suggestion
     deleteGroup(id: ID!): String
     deleteSuggestion(_id: ID!): String
-=======
     addPicture(title: String!, description: String, ownerName: String): Picture
     updatePicture(_id: ID!, title: String, description: String, ownerName: String): Picture
->>>>>>> main
   }
 `;
 
