@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import Navbar from './components/Navbar';
 import TripForm from './components/TripForm';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import SavedTrip from './components/SavedTrip'
 
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
     <Router>
       <div>
         <Navbar/>
-        <TripForm />
+       
         <nav>
           <ul>
             {loggedIn ? (
@@ -50,6 +51,8 @@ export default function App() {
         <Switch>
           <Route path="/profile">
             <Profile />
+            <TripForm />
+            <SavedTrip/>
           </Route>
           {/* <Route path="/users">
             <Users />

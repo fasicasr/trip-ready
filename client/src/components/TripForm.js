@@ -6,8 +6,20 @@ function TripForm() {
 
   return (
     <>
-      <Button onClick={() => setLgShow(true)}>Create Trip</Button>
-    
+    <hr/>
+      {/* <div >
+        <Button onClick={() => setLgShow(true)}>Create Trip</Button>
+      </div> */}
+
+      <div class="row text-center">
+        <div class="w-50 mx-auto p-3 " >
+        <Button onClick={() => setLgShow(true)}>Create Trip</Button>
+        </div>
+      </div>
+      
+
+
+
      <Modal 
         size="lg"
         show={lgShow}
@@ -22,26 +34,26 @@ function TripForm() {
         <Modal.Body> 
         <Form>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Group as={Col} controlId="formGridInput">
             <Form.Label>Destination Name</Form.Label>
-            <Form.Control type="email" placeholder="Lets get away" />
+            <Form.Control type="input" placeholder="Lets get away" />
           </Form.Group>
         </Row>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Group as={Col} controlId="formGridInput">
             <Form.Label>Flight</Form.Label>
-            <Form.Control type="email" placeholder="Flight Number" />
+            <Form.Control type="input" placeholder="Flight Number" />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Group as={Col} controlId="formGridInput">
             <Form.Label>Hotel</Form.Label>
-            <Form.Control type="password" placeholder="Hotel name" />
+            <Form.Control type="input" placeholder="Hotel name" />
           </Form.Group>
         </Row>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Group as={Col} controlId="formGridInput">
             <Form.Label>Activity</Form.Label>
-            <Form.Control type="email" placeholder="List of activities" />
+            <Form.Control type="input" placeholder="List of activities" />
           </Form.Group>
         </Row>
         <Form.Group controlId="formFileSm" className="mb-3">
