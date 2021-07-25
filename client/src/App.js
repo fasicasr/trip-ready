@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LogIn from "./LogIn";
 import Profile from "./Profile";
 import Navbar from './components/Navbar';
-import TripList from './components/TripList';
+import TripForm from './components/TripForm';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -16,7 +16,7 @@ export default function App() {
     <Router>
       <div>
         <Navbar/>
-        <TripList />
+        <TripForm />
         <nav>
           <ul>
             {loggedIn ? (

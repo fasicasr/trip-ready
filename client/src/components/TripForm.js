@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Button, Modal, Form, Row, Col} from "react-bootstrap"
 
-function Example() {
+function TripForm() {
   const [lgShow, setLgShow] = useState(false);
 
   return (
@@ -63,4 +63,4 @@ function Example() {
 
 
 
-export default Example;
+export default TripForm;
