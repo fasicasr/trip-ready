@@ -6,19 +6,13 @@ function TripForm() {
 
   return (
     <>
-    <hr/>
-      {/* <div >
-        <Button onClick={() => setLgShow(true)}>Create Trip</Button>
-      </div> */}
-
+     
       <div class="row text-center">
         <div class="w-50 mx-auto p-3 " >
         <Button onClick={() => setLgShow(true)}>Create Trip</Button>
         </div>
       </div>
-      
-
-
+    
 
      <Modal 
         size="lg"
@@ -26,12 +20,13 @@ function TripForm() {
         onHide={() => setLgShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton >
           <Modal.Title id="example-modal-sizes-title-lg">
             Enter Trip Information
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body> 
+        <Modal.Body>
+        <Button variant="outline-primary" >Invite Friends</Button> 
         <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridInput">
@@ -64,7 +59,7 @@ function TripForm() {
         </Form>
         </Modal.Body>
        
-        <Button variant="primary" type="submit">
+        <Button variant="primary">
           Submit
         </Button>
       </Modal>
