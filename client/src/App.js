@@ -2,14 +2,23 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LogIn from "./LogIn";
 import Profile from "./Profile";
+import Navbar from './components/Navbar';
+import TripForm from './components/TripForm';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import SavedTrip from './components/SavedTrip'
+import TripSearch from './components/TripSearch'
+
 
 export default function App() {
   //setting loggedIn variable to false initially - once logged in - call setLoggedIn function and pass in true
   const [loggedIn, setLoggedIn] = React.useState(false);
 
   return (
+ 
     <Router>
       <div>
+        <Navbar/>
+       
         <nav>
           <ul>
             {loggedIn ? (
@@ -43,6 +52,9 @@ export default function App() {
         <Switch>
           <Route path="/profile">
             <Profile />
+            <TripSearch/>
+            <TripForm />
+            <SavedTrip/>
           </Route>
           {/* <Route path="/users">
             <Users />
@@ -53,6 +65,8 @@ export default function App() {
         </Switch>
       </div>
     </Router>
+
+    
   );
 }
 
