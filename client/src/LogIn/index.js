@@ -1,3 +1,4 @@
+import "./login.css";
 export { default } from "./login";
 
 // function LogIn() {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import UserForm from "./UserForm";
 //a functional component
 const LoginForm2 = (props) => {
   //use state to hold the variables
@@ -31,33 +31,19 @@ const LoginForm2 = (props) => {
         })
     );
   };
-
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
   return (
-    <>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label for="email">Email</label>
-          <input
-            placeholder="Email Address"
-            id="email"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input
-            placeholder="Password"
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </>
+    <UserForm
+      email={email}
+      password={password}
+      handleLogin={handleLogin}
+      setEmail={setEmail}
+      setPassword={setPassword}
+      handleEmailChange={handleEmailChange}
+      handlePasswordChange={handlePasswordChange}
+      buttonText="Log In"
+    />
   );
 };
 
