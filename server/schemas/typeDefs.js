@@ -4,9 +4,15 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String
+    password: String
     firstName: String
     lastName: String
     groups: [Group]
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Suggestion {
@@ -46,7 +52,8 @@ const typeDefs = gql`
   }
   
   type Mutation {
-    addUser(email: String!, firstName: String!, lastName: String!): User
+    addUser(email: String!, firstName: String!, lastName: String!, password:String!): Auth
+    login(email: String!, password: String!): Auth
     updateUser(userId: ID!, email: String, firstName: String, lastName: String): User
     deleteUser(email: String!): String
     addGroup(groupName: String!, destination: String!, users: [ID] ): Group

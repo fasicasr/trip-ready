@@ -1,5 +1,14 @@
 import React from "react";
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import LogIn from "./LogIn";
 import Profile from "./Profile";
 import Navbar from './components/Navbar';
@@ -8,17 +17,33 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import SavedTrip from './components/SavedTrip'
 import TripSearch from './components/TripSearch'
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
-  //setting loggedIn variable to false initially - once logged in - call setLoggedIn function and pass in true
   const [loggedIn, setLoggedIn] = React.useState(false);
 
   return (
- 
+    <ApolloProvider client={client}>
     <Router>
       <div>
         <Navbar/>
-       
         <nav>
           <ul>
             {loggedIn ? (
@@ -66,7 +91,7 @@ export default function App() {
       </div>
     </Router>
 
-    
+    </ApolloProvider>
   );
 }
 
