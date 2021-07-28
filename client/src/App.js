@@ -7,15 +7,21 @@ import TripForm from "./components/TripForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SavedTrip from "./components/SavedTrip";
 import GroupPage from "./components/GroupPage";
-
+import { propTypes } from "react-bootstrap/esm/Image";
+const testSavedTripData = [
+  { id: 1, content: "Result 1" },
+  { id: 2, content: "Result 2" },
+  { id: 3, content: "Result 3" },
+];
 export default function App() {
   //setting loggedIn variable to false initially - once logged in - call setLoggedIn function and pass in true
   const [loggedIn, setLoggedIn] = React.useState(false);
-
+  const [searchData, setSearchData] = React.useState(null);
+  const [savedTripData, setSavedTripData] = React.useState(testSavedTripData);
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar setSearchData={setSearchData} />
 
         <nav>
           <ul>
@@ -51,11 +57,11 @@ export default function App() {
           <Route path="/profile">
             <Profile />
             <TripForm />
-            <SavedTrip />
-            <GroupPage />
+            <SavedTrip savedTripData={savedTripData} />
+            <GroupPage searchData={searchData} savedTripData={savedTripData} />
           </Route>
           <Route path="/GroupPage">
-            <GroupPage />
+            <GroupPage searchData={searchData} savedTripData={savedTripData} />
           </Route>
 
           {/* <Route path="/users">
