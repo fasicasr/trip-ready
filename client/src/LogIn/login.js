@@ -5,7 +5,6 @@ import RegistrationForm2 from "./register";
 function LogIn() {
   return (
     <div className="login">
-      <h1>Ready, Set, Go</h1>
       <LoginForm2 />
       <RegisterForm2 />
     </div>

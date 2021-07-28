@@ -11,11 +11,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import LogIn from "./LogIn";
 import Profile from "./Profile";
+
 import Navbar from './components/Navbar';
 import TripForm from './components/TripForm';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import SavedTrip from './components/SavedTrip'
 import TripSearch from './components/TripSearch'
+import GroupPage from "./components/GroupPage";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -36,6 +38,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 export default function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -44,6 +47,7 @@ export default function App() {
     <Router>
       <div>
         <Navbar/>
+
         <nav>
           <ul>
             {loggedIn ? (
@@ -77,10 +81,15 @@ export default function App() {
         <Switch>
           <Route path="/profile">
             <Profile />
-            <TripSearch/>
+            <TripSearch />
             <TripForm />
-            <SavedTrip/>
+            <SavedTrip />
+            <GroupPage />
           </Route>
+          <Route path="/GroupPage">
+            <GroupPage />
+          </Route>
+
           {/* <Route path="/users">
             <Users />
           </Route> */}
@@ -90,7 +99,6 @@ export default function App() {
         </Switch>
       </div>
     </Router>
-
     </ApolloProvider>
   );
 }
