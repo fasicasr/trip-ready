@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import TripForm from "./components/TripForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SavedTrip from "./components/SavedTrip";
-import TripSearch from "./components/TripSearch";
 import GroupPage from "./components/GroupPage";
 
 export default function App() {
@@ -51,7 +50,6 @@ export default function App() {
         <Switch>
           <Route path="/profile">
             <Profile />
-            <TripSearch />
             <TripForm />
             <SavedTrip />
             <GroupPage />

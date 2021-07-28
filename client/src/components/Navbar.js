@@ -1,31 +1,32 @@
-import React from "react";
-// import '../styles/Navbar.css';
+import React from 'react';
+import {Button, Navbar, Form, Nav, FormControl} from "react-bootstrap"
 
-// By importing the Navbar.css file, it is added to the DOM whenever this component loads
-
-// We can also style a component inside of its JavaScript file by adding style properties to its rendered elements
-// Unlike regular HTML, a JSX style property must be an object instead of a string
-// On a style object, we camelCase all property names, and put all of the values in quotes
-// Non quoted values default to "pixels", e.g. height, margin, padding
-
-// const styles = {
-//   navbarStyle: {
-//     background: 'gray',
-//     justifyContent: 'flex-left',
-//   },
-// };
-
-// We use JSX curly braces to evaluate the style object on the JSX tag
-
-function Navbar() {
+function NavBar() {
   return (
-    <div>
-      <nav className="navbar">
-        <a href="/">Home</a>
-        <a href="/">Logout</a>
-      </nav>
-    </div>
+  <Navbar bg="dark" variant="dark" expand="lg">
+   
+    <Navbar.Collapse id="navbarScroll">
+      <Nav
+        className="mr-auto my-2 my-lg-0"
+        style={{ maxHeight: '100px' }}
+        navbarScroll
+      >
+        <Nav.Link href="#action1">Home</Nav.Link>
+        <Nav.Link href="#action2">Logout</Nav.Link>
+    
+      </Nav>
+      <Form className="d-flex">
+        <FormControl
+          type="search"
+          placeholder="Enter destination"
+          className="mr-2"
+          aria-label="Search"
+        />
+        <Button variant="outline-secondary">Search</Button>
+      </Form>
+    </Navbar.Collapse>
+  </Navbar>
   );
 }
 
-export default Navbar;
+export default NavBar;
