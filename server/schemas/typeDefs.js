@@ -6,6 +6,8 @@ const typeDefs = gql`
     email: String
     firstName: String
     lastName: String
+    flightNumber: String
+    hotel: String
     groups: [Group]
   }
 
@@ -30,6 +32,8 @@ const typeDefs = gql`
     _id: ID!
     groupName: String
     destination: String
+    startDate: String
+    endDate: String
     users: [User]
     suggestions: [Suggestion]
   }
@@ -46,10 +50,10 @@ const typeDefs = gql`
   }
   
   type Mutation {
-    addUser(email: String!, firstName: String!, lastName: String!): User
-    updateUser(userId: ID!, email: String, firstName: String, lastName: String): User
+    addUser(email: String!, firstName: String!, lastName: String!, flightNumber: String, hotel: String ): User
+    updateUser(userId: ID!, email: String, firstName: String, lastName: String, flightNumber: String, hotel: String): User
     deleteUser(email: String!): String
-    addGroup(groupName: String!, destination: String!, users: [ID] ): Group
+    addGroup(groupName: String!, destination: String!, startDate: String, endDate: String users: [ID]): Group
     updateGroup(_id: ID!, groupName: String, destination: String ): Group
     addUserToGroup(groupId: ID!, userId: ID!): Group
     addSuggestion(title: String!, description: String! suggestedUser: ID!, belongToGroup: ID!): Suggestion

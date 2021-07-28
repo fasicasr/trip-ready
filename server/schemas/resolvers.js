@@ -61,12 +61,14 @@ const resolvers = {
       throw new UserInputError('email was not found');
     },
 
-    addGroup: async (parent, { groupName, destination, users }) => {
+    addGroup: async (parent, { groupName, destination, startDate, endDate, users }) => {
 
       const group = await Group.create(
         { 
           groupName, 
-          destination, 
+          destination,
+          startDate,
+          endDate, 
           users: users
         });
         
@@ -149,13 +151,19 @@ const resolvers = {
       )
     },
 
-    updateGroup: async(parent, {_id, groupName, destination }) => {
+    updateGroup: async(parent, {_id, groupName, destination, startDate, endDate }) => {
       const updatedGroup = {};
       if(groupName) 
         updatedGroup.groupName = groupName;
       
       if(destination) 
         updatedGroup.destination = destination;
+
+      if(startDate) 
+        updatedGroup.startDate = startDate;
+
+      if(endDate) 
+        updatedGroup.endDate = endDate;
 
       const group = await Group.findOneAndUpdate(
         {_id},
@@ -272,7 +280,7 @@ const resolvers = {
         }
         throw new UserInputError('Suggestion was not found');
       }
-
+ 
       /**
         Example query for deleteSuggestion:
         mutation deleteSuggestion{
