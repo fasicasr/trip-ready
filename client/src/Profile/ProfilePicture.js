@@ -13,7 +13,7 @@ const ProfileImage = (props) => {
               <Form.Label>Profile Image</Form.Label>
               <Form.Control type="file" name="profileImage" />
             </Form.Group>
-            <Button variant="primary">Update Profile Image</Button>
+            <Button variant="dark">Update Profile Image</Button>
           </Form>
         </Col>
         <Col></Col>

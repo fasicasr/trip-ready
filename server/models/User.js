@@ -15,6 +15,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    groups: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Group'
+        }
+    ]
 });
 
 const User = model('User', userSchema);
