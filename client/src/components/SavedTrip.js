@@ -17,7 +17,10 @@ function SavedTrip(props) {
                     <strong>Date</strong>: August 1st - 10th
                   </ListGroup.Item>
                 </ListGroup>
-                <Button variant="dark">Open</Button>
+                <Button primary="dark">
+                  <a href="./GroupPage">open</a>
+                </Button>
+                ;{/* <Button variant="dark">Open</Button> */}
               </Card.Body>
             </Card>
           </Col>
