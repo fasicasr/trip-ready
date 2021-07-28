@@ -14,7 +14,7 @@ function SavedTrip(props) {
                     <strong>Location</strong>: Paris
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    <strong>Date</strong>: August 1st - 10th
+                    <strong>Date</strong>: August 5th - 10th
                   </ListGroup.Item>
                 </ListGroup>
                 <Button primary="dark">
