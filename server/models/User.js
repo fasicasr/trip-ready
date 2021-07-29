@@ -21,6 +21,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    flightNumber: {
+        type: String
+    },
+    hotel: {
+        type: String
+    },
     groups: [
         {
             type: Schema.Types.ObjectId,
@@ -45,3 +51,5 @@ userSchema.methods.isCorrectPassword = async function (password) {
 const User = model('User', userSchema);
 
 module.exports = User;
+
+//TODO add ticket number as property hotel

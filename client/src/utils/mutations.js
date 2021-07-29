@@ -6,7 +6,8 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
-        username
+        firstName,
+        lastName
       }
     }
   }
@@ -93,15 +94,15 @@ mutation addUserToGroup($groupId: ID!, $userId: ID!){
   }
 `;
 
-export const ADD_SUGGESTION = gql`
-mutation addSuggestion($title: String!, $description: String!, $suggestedUser: ID!, $belongToGroup: ID!){
-    addSuggestion(title: $title, description: $description", suggestedUser: $suggestedUser, belongToGroup: $belongToGroup){
-      title,
-      description,
-      createdAt
-    }
-  }
-`;
+// export const ADD_SUGGESTION = gql`
+// mutation addSuggestion($title: String!, $description: String!, $suggestedUser: ID!, $belongToGroup: ID!){
+//     addSuggestion(title: $title, description: $description", suggestedUser: $suggestedUser, belongToGroup: $belongToGroup){
+//       title,
+//       description,
+//       createdAt
+//     }
+//   }
+// `;
 
 export const UPDATE_SUGGESTION = gql`
 mutation updateSuggestion($id: ID!, $title: String, $description: String){

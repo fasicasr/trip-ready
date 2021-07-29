@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const groupSchema = new Schema({
     groupName: {
@@ -10,6 +11,14 @@ const groupSchema = new Schema({
     destination: {
         type: String,
         required: true
+    },
+    startDate: {
+        type: Date,
+        get: (timestamp) => dateFormat(timestamp),
+    },
+    endDate: {
+        type: Date,
+        get: (timestamp) => dateFormat(timestamp),
     },
     users: [
         {
@@ -28,3 +37,5 @@ const groupSchema = new Schema({
 const Group = model('Group', groupSchema);
 
 module.exports = Group;
+
+//TODO add start and end dates
