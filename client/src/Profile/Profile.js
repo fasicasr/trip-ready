@@ -5,7 +5,7 @@ function Profile() {
   return (
     <div className="profile">
       <ProfileCaption />
-      <ProfilePicture />
+      {/* <ProfilePicture /> */}
     </div>
   );
 }

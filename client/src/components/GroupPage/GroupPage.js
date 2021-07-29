@@ -1,17 +1,28 @@
 import React from "react";
-import SavedTrip from "./SavedTrip";
-import Gallery from "./Gallery";
-import SearchResult from "./SearchResult";
+import SavedTrip from "../SavedTrip";
+import Gallery from "../Gallery";
+import SearchResult from "../SearchResult";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import "./GroupPage.css";
+
 function GroupPage(props) {
   return (
     <Container fluid className="profile">
       <Row>
         <Col>
-          <h6>Destination:</h6>
-          <h6>Date:</h6>
-          <h6>Description:</h6>
-          <Gallery />
+          <Row>
+            <Col className="ms-5 border custom">
+              <header></header>
+              <h5>Destination:</h5>
+              <h5>Date:</h5>
+              <h5>Description:</h5>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Gallery />
+            </Col>
+          </Row>
         </Col>
       </Row>
       <Row>

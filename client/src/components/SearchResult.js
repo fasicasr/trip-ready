@@ -12,12 +12,16 @@ function SearchResult(props) {
     <Container fluid="md">
       {/* add props.searchdata here to replace result 1 tag with data rendered from api */}
       {searchData.map((item) => (
-        <Row>
+        <Row className="mt-2">
           <Col className="searchResult">
-            {item.content}
-            <Button variant="dark" onClick={handleAddToTrip}>
-              Add to Trip
-            </Button>
+            <Row>
+              <Col sm={8}>{item.content}</Col>
+              <Col sm={4} className="text-end">
+                <Button variant="dark" onClick={handleAddToTrip}>
+                  Add to Trip
+                </Button>
+              </Col>
+            </Row>
           </Col>
         </Row>
       ))}

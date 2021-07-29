@@ -7,6 +7,7 @@ function SavedTrip(props) {
         <Row>
           <Col>
             <Card style={{ width: "100%" }}>
+              <i class="fas fa-quote-left fa-2x fa-pull-left"></i>
               <Card.Header>Trip Title</Card.Header>
               <Card.Body>
                 <ListGroup variant="flush">
@@ -17,10 +18,12 @@ function SavedTrip(props) {
                     <strong>Date</strong>: August 5th - 10th
                   </ListGroup.Item>
                 </ListGroup>
-                <Button primary="dark">
-                  <a href="./GroupPage">open</a>
+                <Button variant="dark">
+                  <a className="link" href="./GroupPage">
+                    open
+                  </a>
                 </Button>
-                ;{/* <Button variant="dark">Open</Button> */}
+                {/* <Button variant="dark">Open</Button> */}
               </Card.Body>
             </Card>
           </Col>
