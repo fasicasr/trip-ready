@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import "./profile.css";
+import { usePlacesContext } from '../components/Navbar';
+
 
 function ProfileCaption() {
   const [editMode, setEditMode] = React.useState(false);
+  // const { places } = usePlacesContext();
 
   return (
     <div className="profilecaption">
-      <img src="./header.jpeg" class="img-fluid" alt="Responsive image"></img>
-      <h1 className="caption ms-5"> Name</h1>
+
+      {/* {places.map((place) => (
+        <div>key={place.name}
+        {place.name} : {place.formatted_address}
+        </div>
+      ))} */}
+
+      <h1>Profile Caption</h1>
+      <h1>Name</h1>
       <form>
         <div>
           {editMode ? (

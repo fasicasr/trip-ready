@@ -1,30 +1,47 @@
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Card, ListGroup} from "react-bootstrap";
 
-const searchData = [
-  { id: 1, content: "Result 1" },
-  { id: 2, content: "Result 2" },
-  { id: 3, content: "Result 3" },
-];
-
-function SearchResult(props) {
+function SearchResult({searchResults}) {
   const handleAddToTrip = (event) => {};
+  console.log("search result: " + searchResults);
+
+  let itemsToRender;
+  if (searchResults) {
+    itemsToRender = searchResults.map(item => {
+      return (
+        <Container>
+          <Row></Row>
+          <Row>
+            <Col sm={4}>
+            <Card style={{ width: "100%" }}>
+              <Card.Header>Trip Title</Card.Header>
+              <Card.Body>
+                <ListGroup variant="flush">
+                  <ListGroup.Item>
+                    <strong>Location</strong>: {item.name}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <strong>Address</strong>: {item.address}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <strong>Rating</strong>: {item.rating}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <strong>Type of activity</strong>: {item.type}
+                  </ListGroup.Item>
+                </ListGroup>
+                <Button variant="dark">Open</Button>
+              </Card.Body>
+            </Card>
+            </Col>
+          </Row>
+        </Container>
+      )
+    });
+  }
+
   return (
     <Container fluid="md">
-      {/* add props.searchdata here to replace result 1 tag with data rendered from api */}
-      {searchData.map((item) => (
-        <Row className="mt-2">
-          <Col className="searchResult">
-            <Row>
-              <Col sm={8}>{item.content}</Col>
-              <Col sm={4} className="text-end">
-                <Button variant="dark" onClick={handleAddToTrip}>
-                  Add to Trip
-                </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      ))}
+      {itemsToRender}        
     </Container>
   );
 }
