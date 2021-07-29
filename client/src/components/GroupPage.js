@@ -39,10 +39,11 @@ function GroupPage(props) {
           // open_now: data.results[i].opening_hours.open_now
         })
       }
-      console.log(object);
-      console.log(data);
+      // console.log(object);
+      // console.log(data);
       // props.setSearchData(searchRef.current.object);
       setSearchResults(object);
+      setThings(object);
       return data;
     });
   }
@@ -84,7 +85,8 @@ function GroupPage(props) {
         }
         // props.setSearchData(searchRef.current.object);
         setSearchResults(object);
-        console.log(object);
+        setHotels(object);
+        // console.log(object);
         return object;
       })
     });
@@ -134,7 +136,12 @@ function GroupPage(props) {
           <SavedTrip savedTripData={props.savedTripData} />
         </Col>
         <Col xs={9}>
-          <SearchResult searchResults={searchResults} />
+          {/* {
+            things? 
+            <SearchResult things={things} /> :
+            <SearchResult hotels={hotels} />
+          } */}
+          <SearchResult searchResults={searchResults} things={things} hotels={hotels} />
         </Col>
       </Row>
     </Container>
