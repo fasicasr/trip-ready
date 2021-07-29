@@ -23,7 +23,7 @@ import LogIn from "./pages/Login";
 import HomePage from "./pages/HomePage";
 import Signup from "./pages/Signup";
 import ProfilePage from "./pages/ProfilePage";
-import GalleryView from "./components/GalleryView";
+import GalleryView from "./components/Gallery/GalleryView";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
