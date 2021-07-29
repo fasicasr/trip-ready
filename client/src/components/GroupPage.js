@@ -8,6 +8,9 @@ function GroupPage(props) {
     <Container fluid className="profile">
       <Row>
         <Col>
+          <h6>Destination:</h6>
+          <h6>Date:</h6>
+          <h6>Description:</h6>
           <Gallery />
         </Col>
       </Row>
