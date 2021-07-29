@@ -58,7 +58,7 @@ export default function App() {
             <Profile />
             <TripForm />
             <SavedTrip savedTripData={savedTripData} />
-            <GroupPage searchData={searchData} savedTripData={savedTripData} />
+            {/* <GroupPage searchData={searchData} savedTripData={savedTripData} />  */}
           </Route>
           <Route path="/GroupPage">
             <GroupPage searchData={searchData} savedTripData={savedTripData} />
