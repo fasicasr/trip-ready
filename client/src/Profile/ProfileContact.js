@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-function ProfileCaption() {
+function ProfileContact() {
   const [editMode, setEditMode] = React.useState(false);
 
   return (

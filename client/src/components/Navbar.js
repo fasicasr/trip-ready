@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Nav, Navbar} from "react-bootstrap"
+import { propTypes } from "react-bootstrap/esm/Image";
 
 function NavBar() {
   return (
