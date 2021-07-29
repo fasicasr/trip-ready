@@ -26,8 +26,8 @@ export const Gallery = () => (
           fit: "crop",
           fm: "jpg",
         }}
-        width="100%"
-        height="80px"
+        width="40%"
+        height="150px"
         border="center"
       />
     ))}
