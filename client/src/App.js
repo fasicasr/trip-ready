@@ -21,7 +21,7 @@ export default function App() {
   return (
     <Router>
       <div>
-        <Navbar setSearchData={setSearchData} />
+       
 
         <nav>
           <ul>
@@ -55,13 +55,15 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/profile">
+          <Navbar setSearchData={setSearchData} />
             <Profile />
             <TripForm />
             <SavedTrip savedTripData={savedTripData} />
             {/* <GroupPage searchData={searchData} savedTripData={savedTripData} />  */}
           </Route>
           <Route path="/GroupPage">
-            <GroupPage searchData={searchData} savedTripData={savedTripData} />
+          <Navbar/>
+            <GroupPage searchData={searchData} savedTripData={savedTripData} setSearchData={setSearchData}/>
           </Route>
 
           {/* <Route path="/users">
