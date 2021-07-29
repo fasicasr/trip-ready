@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { Link, useHistory } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
@@ -39,6 +39,11 @@ const LogIn = (props) => {
     });
   };
 
+  const ProfilePage = () => {
+    const history = useHistory();
+    history.push('/profile');
+  }
+
   return (
     <section className="vh-100">
       <div className="container py-5 h-100">
@@ -56,9 +61,7 @@ const LogIn = (props) => {
                 <div className="col-md-6 col-lg-7 d-flex align-items-center" style={{ "backgroundColor": "#647BD1" }}>
                   <div className="card-body p-4 p-lg-5 text-black">
                     {data ? (
-                      <p>Logging in to {' '}
-                        <Link to="/profile">profile page...</Link>
-                      </p>
+                      ProfilePage()
                     ) : (
                       <form onSubmit={handleFormSubmit}>
                         <div className="d-flex align-items-center mb-3 pb-1">
