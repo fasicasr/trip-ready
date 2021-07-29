@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import TripForm from "./components/TripForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SavedTrip from "./components/SavedTrip";
-import GroupPage from "./components/GroupPage";
+import GroupPage from "./components/GroupPage/GroupPage";
 import { propTypes } from "react-bootstrap/esm/Image";
 const testSavedTripData = [
   { id: 1, content: "Result 1" },

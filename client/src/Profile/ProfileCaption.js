@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./profile.css";
 import { usePlacesContext } from '../components/Navbar';
 
 
@@ -22,14 +23,18 @@ function ProfileCaption() {
           {editMode ? (
             <>
               <textarea />
-              <button onClick={() => setEditMode(false)}>Save</button>
+              <button className="btn" onClick={() => setEditMode(false)}>
+                Save
+              </button>
             </>
           ) : (
-            <button onClick={() => setEditMode(true)}>Edit</button>
+            <button className="btn-2" onClick={() => setEditMode(true)}>
+              Edit
+            </button>
           )}
         </div>
       </form>
-      <h1>About Me</h1>
+      <h1 className="caption ms-5"> About Me</h1>
       <form>
         <div>
           {editMode ? (
@@ -42,7 +47,7 @@ function ProfileCaption() {
           )}
         </div>
       </form>
-      <h1>Email</h1>
+      <h1 className="caption ms-5">Email</h1>
       <form>
         <div>
           {editMode ? (
@@ -58,4 +63,5 @@ function ProfileCaption() {
     </div>
   );
 }
+
 export default ProfileCaption;
