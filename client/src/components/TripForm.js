@@ -27,7 +27,7 @@ function TripForm() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Button variant="outline-primary">Invite Friends</Button>
+         
           <Form>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridInput">
