@@ -11,6 +11,8 @@ View Application - [Here](https://trip-ready.herokuapp.com/)
 Preview of Application:
 
 Login Page: 
+
+
 ![logo](https://user-images.githubusercontent.com/78572507/127594206-2eeefe0d-ccd9-4a70-96ef-16e742c7e6df.png)
 
 Profile Page:
