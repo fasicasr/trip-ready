@@ -10,7 +10,6 @@ const images = [
   "mountain3",
   "river1",
   "river2",
-  "river3",
 ];
 
 const buildURL = (imagePath) =>
@@ -20,15 +19,16 @@ export const Gallery = () => (
   <div className="gallery">
     {images.map((image) => (
       <Imgix
-        sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
+        sizes="(min-width: 960px) 10vw, (min-width: 640px) 50vw, 50vw"
         src={buildURL(image)}
         key={image}
         imgixParams={{
           fit: "crop",
           fm: "jpg",
         }}
-        width="600"
-        height="600"
+        width="40%"
+        height="150px"
+        border="center"
       />
     ))}
   </div>

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { Button, Modal, Form, Row, Col, FloatingLabel  } from "react-bootstrap";
 
 function TripForm() {
   const [lgShow, setLgShow] = useState(false);
 
   return (
     <>
+    <hr></hr>
       <div class="row text-center">
         <div class="w-50 mx-auto p-3 ">
           <Button variant="dark" onClick={() => setLgShow(true)}>
@@ -26,7 +27,7 @@ function TripForm() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Button variant="outline-primary">Invite Friends</Button>
+         
           <Form>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridInput">
@@ -36,21 +37,22 @@ function TripForm() {
             </Row>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridInput">
-                <Form.Label>Flight</Form.Label>
-                <Form.Control type="input" placeholder="Flight Number" />
+                <Form.Label>Date</Form.Label>
+                <Form.Control type="input" placeholder="From" />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridInput">
-                <Form.Label>Hotel</Form.Label>
-                <Form.Control type="input" placeholder="Hotel name" />
+                <Form.Label>...</Form.Label>
+                <Form.Control type="input" placeholder="to" />
               </Form.Group>
             </Row>
-            <Row className="mb-3">
-              <Form.Group as={Col} controlId="formGridInput">
-                <Form.Label>Activity</Form.Label>
-                <Form.Control type="input" placeholder="List of activities" />
-              </Form.Group>
-            </Row>
+            <FloatingLabel controlId="floatingTextarea2" label="Description">
+              <Form.Control
+                as="textarea"
+                placeholder="Leave a comment here"
+                style={{ height: '100px' }}
+              />
+            </FloatingLabel>
             <Form.Group controlId="formFileSm" className="mb-3">
               <Form.Label></Form.Label>
               <Form.Control type="file" size="sm" />
