@@ -9,9 +9,16 @@ As an avid traveler, I want an itinerary management application that holds infor
 View Application - [Here](https://trip-ready.herokuapp.com/)
 
 Preview of Application:
-![Application image]()
-![Application image]()
-![Application image]()
+
+Login Page: 
+![logo](https://user-images.githubusercontent.com/78572507/127594206-2eeefe0d-ccd9-4a70-96ef-16e742c7e6df.png)
+
+Profile Page:
+![Screen Shot 2021-07-29 at 10 53 32 PM](https://user-images.githubusercontent.com/78572507/127594233-85f6a1eb-22f4-42b3-91a7-fb9cd26b165b.png)
+
+Group Page:
+![Screen Shot 2021-07-29 at 10 53 45 PM](https://user-images.githubusercontent.com/78572507/127594250-947b95e8-436c-4fb8-b330-59e5e9bf92bb.png)
+
 
 ## Usage
 
