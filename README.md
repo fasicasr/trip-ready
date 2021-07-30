@@ -13,7 +13,8 @@ Preview of Application:
 Login Page: 
 
 
-![logo](https://user-images.githubusercontent.com/78572507/127594206-2eeefe0d-ccd9-4a70-96ef-16e742c7e6df.png)
+![Screen Shot 2021-07-29 at 10 52 56 PM](https://user-images.githubusercontent.com/78572507/127596283-788267d2-d90c-401f-9d93-2bdc863f3664.png)
+
 
 Profile Page:
 ![Screen Shot 2021-07-29 at 10 53 32 PM](https://user-images.githubusercontent.com/78572507/127594233-85f6a1eb-22f4-42b3-91a7-fb9cd26b165b.png)
