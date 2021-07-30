@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import SavedTrip from "./SavedTrip";
-import Gallery from "./Gallery";
-import SearchResult from "./SearchResult";
+import SavedTrip from "../SavedTrip";
+import Gallery from "../Gallery";
+import SearchResult from "../SearchResult";
 import { Container, Card, Row, Col, Form, Button } from "react-bootstrap";
 import { propTypes } from "react-bootstrap/esm/Image";
 
@@ -22,7 +22,7 @@ function GroupPage(props) {
   };
 
   const renderThingsToDoSearch = (destination) => {
-    const key = 'AIzaSyCH-vDcWNCDsoG4WXCJ8S9cpFf3jpzzF54';
+    const key = 'AIzaSyDODBmnEkhFqsw2KRbPo5vhxIJziwqMSI8';
     const requestUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=things%20to%20do+in+${destination}&key=${key}`;
 
     fetch(requestUrl)
@@ -96,9 +96,9 @@ function GroupPage(props) {
     <Container fluid className="profile">
       <Row>
         <Col>
-          <h6>Destination:</h6>
-          <h6>Date:</h6>
-          <h6>Description:</h6>
+          <h6>Destination: <b>Las Vegas</b></h6>
+          <h6>Date: <b>August 10, 2021</b></h6>
+          <h6>Description: <b>What happens in Vegas stays in Vegas</b></h6>
           <Card  >
             <Card.Header className="text-center">Where to?</Card.Header>
             <Card.Body>
@@ -126,15 +126,16 @@ function GroupPage(props) {
         </Card>
         <hr></hr>
         <div className="float-right">
-        <Button variant="outline-dark" size="lg">Invite Friends</Button>
+        <Button variant="outline-dark" size="lg" className="mb-3">Invite Friends</Button>
         </div>
-          <Gallery />
+          {/* <Gallery /> */}
         </Col>
+        <hr></hr>
       </Row>
       <Row>
-        <Col xs={3}>
+        {/* <Col xs={3}>
           <SavedTrip savedTripData={props.savedTripData} />
-        </Col>
+        </Col> */}
         <Col xs={9}>
           {/* {
             things? 

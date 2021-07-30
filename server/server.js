@@ -4,12 +4,21 @@ const { ApolloServer } = require('apollo-server-express');
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
 
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const fileRoutes = require('./routes/file-upload-routes')
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api', fileRoutes.routes);
 
 server.applyMiddleware({ app });
 

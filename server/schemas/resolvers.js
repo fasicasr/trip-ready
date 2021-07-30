@@ -1,5 +1,6 @@
-const { UserInputError } = require('apollo-server-express');
+const { UserInputError, AuthenticationError } = require('apollo-server-express');
 const { User, Group, Picture, Suggestion } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -7,7 +8,7 @@ const resolvers = {
       return User.find().populate('groups');
     },
     user: async (parent, { email }) => {
-      return User.findOne({ email });
+      return User.findOne({ email }).populate('groups');
     }, 
     groups: async () => {
       return Group.find().populate(['users', 'suggestions']);
@@ -31,9 +32,27 @@ const resolvers = {
 
 
   Mutation: {
-    addUser: async (parent, { email, firstName, lastName }) => {
-      const user = await User.create({ email, firstName, lastName });
-      return user;
+    addUser: async (parent, { email, firstName, lastName, password }) => {
+      const user = await User.create({ email, firstName, lastName, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('No user found with this email address');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
     },
     updateUser: async (parent, { userId, email, firstName, lastName }) => {
       const updatedUser = {};

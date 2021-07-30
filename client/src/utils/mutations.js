@@ -1,14 +1,30 @@
 import { gql } from '@apollo/client';
 
-export const ADD_USER = gql`
-mutation addUser($email: String!, $firstName: String!, $lastName: String!){
-    addUser(email: $email, firstName: $firstName, lastName: $lastName){
-      _id,
-      email,
-      firstName,
-      lastName
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        firstName,
+        lastName
+      }
     }
   }
+`;
+
+export const ADD_USER = gql`
+  mutation addUser($email: String!, $firstName: String!, $lastName: String!, $password: String!){
+      addUser(email: $email, firstName: $firstName, lastName: $lastName, password: $password){
+        token
+        user {
+          _id,
+          email,
+          firstName,
+          lastName
+        }
+      }
+    }
 `;
 
 export const UPDATE_USER = gql`
@@ -78,15 +94,15 @@ mutation addUserToGroup($groupId: ID!, $userId: ID!){
   }
 `;
 
-export const ADD_SUGGESTION = gql`
-mutation addSuggestion($title: String!, $description: String!, $suggestedUser: ID!, $belongToGroup: ID!){
-    addSuggestion(title: $title, description: $description", suggestedUser: $suggestedUser, belongToGroup: $belongToGroup){
-      title,
-      description,
-      createdAt
-    }
-  }
-`;
+// export const ADD_SUGGESTION = gql`
+// mutation addSuggestion($title: String!, $description: String!, $suggestedUser: ID!, $belongToGroup: ID!){
+//     addSuggestion(title: $title, description: $description", suggestedUser: $suggestedUser, belongToGroup: $belongToGroup){
+//       title,
+//       description,
+//       createdAt
+//     }
+//   }
+// `;
 
 export const UPDATE_SUGGESTION = gql`
 mutation updateSuggestion($id: ID!, $title: String, $description: String){
